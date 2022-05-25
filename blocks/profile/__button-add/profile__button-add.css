@@ -1,0 +1,8 @@
+.profile__button-add {
+  max-width: 150px;
+  max-height: 50px;
+  padding: 14px 64px;
+  background-color: #000;
+  border:solid 2px #fff;
+  margin: auto 0;
+}

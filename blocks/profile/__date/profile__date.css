@@ -1,0 +1,6 @@
+.profile__date {
+  display: flex;
+  flex-direction: column;
+  max-width: 336px;
+  margin-top: 22px;
+}
