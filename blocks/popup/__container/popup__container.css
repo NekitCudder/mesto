@@ -6,6 +6,7 @@
   margin: 195px auto;
   padding: 34px 36px 37px;
   box-sizing: border-box;
+  transition: 0.2s;
 }
 
 @media screen and (max-width:534px) {

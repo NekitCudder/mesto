@@ -1,12 +1,13 @@
 .popup {
-  display: none;
+  /*display: none;препятствует плавному открытию*/
   width: 100vw;
   height: 100vh;
   position: fixed;
-  /*background-color: #000000;*/
-  /* opacity: 0.5;*/
-  z-index: 2;
-  /*проверить потом 1/2*/
+  background-color: rgba(0, 0, 0, 0.5);
+  z-index: 1;
   top: 0;
   left: 0;
+  visibility: hidden;
+  opacity: 0;
+  transition: 0.2s;
 }
