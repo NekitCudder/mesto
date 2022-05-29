@@ -11,4 +11,4 @@
 - в следующем спринте
 
 ---
-[Ссылка на проект] https://nekitcudder.github.io/mesto/
+[Ссылка на проект](https://nekitcudder.github.io/mesto/)
