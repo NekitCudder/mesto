@@ -10,8 +10,8 @@ let buttonClose = document.querySelector('.popup__button-close');
 
 function popupOpen() {
   popup.classList.add('popup_opened');
-  nameInput.value=profileName.textContent;
-  captionInput.value=profileCaption.textContent;
+  nameInput.value = profileName.textContent;
+  captionInput.value = profileCaption.textContent;
 }
 buttonOpen.addEventListener('click', popupOpen);
 

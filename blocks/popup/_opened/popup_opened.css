@@ -1,6 +1,7 @@
 .popup_opened {
-  /*display: block; препятствует плавному открытию*/
-  visibility: visible;
+  display: block;
+  /*препятствует плавному открытию (разобраться в след. спринте)*/
+  /*visibility: visible; плавное открытие
   opacity: 1;
-  transition: .2s;
+  transition: .2s;*/
 }
