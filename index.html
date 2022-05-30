@@ -21,15 +21,13 @@
         <div class="profile__date">
           <div class="profile__name-edit">
             <h1 class="profile__name">Жак-Ив Кусто</h1>
-            <button type="button" class="profile__button-edit">
-              <img class="profile__logo-edit" src="./images/edit.svg" alt="Карандаш">
+            <button type="button" aria-label="Edit" class="profile__button-edit">
             </button>
           </div>
           <p class="profile__caption">Исследователь океана</p>
         </div>
       </div>
-      <button type="button" class="profile__button-add">
-        <img class="profile__logo-add" src="./images/add.svg" alt="Плюс">
+      <button type="button" aria-label="Add" class="profile__button-add">
       </button>
     </section>
 
@@ -39,8 +37,7 @@
           <img class="cards__image" src="./images/spb.jpg" alt="Исаакиевский собор">
           <div class="cards__caption">
             <h2 class="cards__title">Санкт-Петербург</h2>
-            <button type="button" class="cards__button-like">
-              <img class="cards__logo-like" src="./images/like.svg" alt="Сердечко">
+            <button type="button" aria-label="Like" class="cards__button-like">
             </button>
           </div>
         </li>
@@ -48,8 +45,7 @@
           <img class="cards__image" src="./images/sochi.jpg" alt="Доски для серфинга">
           <div class="cards__caption">
             <h2 class="cards__title">Сочи</h2>
-            <button type="button" class="cards__button-like">
-              <img class="cards__logo-like" src="./images/like.svg" alt="Сердечко">
+            <button type="button" aria-label="Like" class="cards__button-like">
             </button>
           </div>
         </li>
@@ -57,8 +53,7 @@
           <img class="cards__image" src="./images/kazan.jpg" alt="Мечеть">
           <div class="cards__caption">
             <h2 class="cards__title">Казань</h2>
-            <button type="button" class="cards__button-like">
-              <img class="cards__logo-like" src="./images/like.svg" alt="Сердечко">
+            <button type="button" aria-label="Like" class="cards__button-like">
             </button>
           </div>
         </li>
@@ -66,8 +61,7 @@
           <img class="cards__image" src="./images/kamchatka.jpg" alt="Берег океана">
           <div class="cards__caption">
             <h2 class="cards__title">Камчатка</h2>
-            <button type="button" class="cards__button-like">
-              <img class="cards__logo-like" src="./images/like.svg" alt="Сердечко">
+            <button type="button" aria-label="Like" class="cards__button-like">
             </button>
           </div>
         </li>
@@ -75,8 +69,7 @@
           <img class="cards__image" src="./images/krasnoyarsk.jpg" alt="Озеро в лесу">
           <div class="cards__caption">
             <h2 class="cards__title">Красноярский край</h2>
-            <button type="button" class="cards__button-like">
-              <img class="cards__logo-like" src="./images/like.svg" alt="Сердечко">
+            <button type="button" aria-label="Like" class="cards__button-like">
             </button>
           </div>
         </li>
@@ -84,8 +77,7 @@
           <img class="cards__image" src="./images/lomonosov.jpg" alt="Тропа в саду">
           <div class="cards__caption">
             <h2 class="cards__title">Ломоносов</h2>
-            <button type="button" class="cards__button-like">
-              <img class="cards__logo-like" src="./images/like.svg" alt="Сердечко">
+            <button type="button" aria-label="Like" class="cards__button-like">
             </button>
           </div>
         </li>
@@ -99,15 +91,14 @@
 
   <div class="popup">
     <div class="popup__container">
-      <form class="popup__form">
-        <h2 class="popup__title">Редактировать профиль</h2>
-        <input type="text" name="name" class="popup__name" placeholder="введите имя">
-        <input type="text" name="caption" class="popup__caption" placeholder="введите деятельность">
-        <button type="button" class="popup__button-save">Сохранить</button>
-        <button type="button" class="popup__button-close">
-          <img class="popup__logo-close" src="./images/close.svg" alt="Крестик">
-        </button>
+      <h2 class="popup__title">Редактировать профиль</h2>
+      <form class="popup__form" name="popup__form">
+        <input type="text" name="name" class="popup__input popup__input_text_name" placeholder="введите имя">
+        <input type="text" name="caption" class="popup__input popup__input_text_caption" placeholder="введите деятельность">
+        <button type="submit" class="popup__button-save">Сохранить</button>
       </form>
+      <button type="button" aria-label="Close" class="popup__button-close">
+      </button>
     </div>
   </div>
   <script src="./scripts/index.js"></script>
