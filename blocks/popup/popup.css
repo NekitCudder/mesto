@@ -7,7 +7,7 @@
   z-index: 1;
   top: 0;
   left: 0;
-  /*visibility: hidden;   плавное открытие
+  /*visibility: hidden;   /*плавное открытие
   opacity: 0;
   transition: 0.2s;*/
 }

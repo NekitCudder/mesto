@@ -4,13 +4,17 @@
   position: absolute;
   right: -40px;
   top: -40px;
-  background-color: #000;
+  background-color: rgba(0, 0, 0, 0);
   padding: 0;
   border: 0;
+  background-image: url(../../../images/close.svg);
+  background-repeat: no-repeat;
+  background-position: center;
+  background-size: 32px;
 }
 
-.popup__button-close:hover{
-  opacity:0.6;
+.popup__button-close:hover {
+  opacity: 0.6;
   transition: opacity 0.2s linear;
 }
 
@@ -20,5 +24,6 @@
     height: 20px;
     right: 0;
     top: -36px;
+    background-size: 20px;
   }
 }
