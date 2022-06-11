@@ -57,8 +57,14 @@ const newCard = (name, link) => {
   const templateTitle = templateCard.querySelector('.cards__title');
   const templateImage = templateCard.querySelector('.cards__image');
   const templateDeleteCard = templateCard.querySelector('.cards__button-delete');
+  const buttonLike = templateCard.querySelector('.cards__button-like');
   templateTitle.textContent = name;
   templateImage.src = link;
+
+  //обработчик событий лайка карточки
+  buttonLike.addEventListener('click', (evt) => {
+    evt.target.classList.toggle('cards__button-like_active');
+  })
 
   // обработчик событий открытия карточки
   templateImage.addEventListener('click', () => {
@@ -114,7 +120,6 @@ buttonAddCard.addEventListener('click', () => {
   popupOpen(popupAC);
 });
 
-
 //обработчики событий закрытия попапов
 buttonCloseProfile.addEventListener('click', () => {
   popupClose(popupEP);
@@ -129,6 +134,8 @@ buttonCloseImage.addEventListener('click', () => {
 //обработчик событий сохранения данных
 formPopupProfile.addEventListener('submit', formSubmitProfile);
 formPopupCard.addEventListener('submit', formSubmitCard);
+
+
 
 //функция добавления карточек при загрузке страницы
 initialCards.forEach((item) => {
