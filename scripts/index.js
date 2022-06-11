@@ -40,7 +40,8 @@ const buttonCloseProfile = popupEP.querySelector('.popup__button-close');
 const buttonCloseCard = popupAC.querySelector('.popup__button-close');
 
 const template = document.querySelector('#elements').content;
-const editTemplate = document.querySelector('.cards')
+const editTemplate = document.querySelector('.cards');
+
 
 const NameCardInput = document.querySelector('.popup__name-card');
 const LinkCardInput = document.querySelector('.popup__link-card');
@@ -48,12 +49,17 @@ const LinkCardInput = document.querySelector('.popup__link-card');
 
 //функция создания новой карточки
 const newCard = (name, link) => {
-  const templateCards = template.querySelector('.cards__item').cloneNode(true);
-  const templateTitle = templateCards.querySelector('.cards__title');
-  const templateImage = templateCards.querySelector('.cards__image');
+  const templateCard = template.querySelector('.cards__item').cloneNode(true);
+  const templateTitle = templateCard.querySelector('.cards__title');
+  const templateImage = templateCard.querySelector('.cards__image');
   templateTitle.textContent = name;
   templateImage.src = link;
-  return templateCards;
+  const templateDeleteCard = templateCard.querySelector('.cards__button-delete');
+// обработчик событый удаления карточки
+  templateDeleteCard.addEventListener('click', () => {
+    DeleteCard(templateCard);
+  })
+  return templateCard;
 }
 
 //функция открытия попапа
@@ -76,6 +82,10 @@ const formSubmitCard = (evt) => {
   evt.preventDefault();
   editTemplate.prepend(newCard(NameCardInput.value, LinkCardInput.value));
   popupClose(popupAC);
+}
+//функция удаления карточки
+const DeleteCard = (item) => {
+  item.remove();
 }
 
 
