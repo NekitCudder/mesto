@@ -5,6 +5,11 @@
   align-self: center;
   border: 0;
   padding: 0;
+  background-image: url(../../../images/like.svg);
+  background-repeat: no-repeat;
+  background-position: center;
+  background-size: 22px 19px;
+  cursor: pointer;
 }
 
 .cards__button-like:hover {

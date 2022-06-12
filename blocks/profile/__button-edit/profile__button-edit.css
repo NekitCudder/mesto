@@ -4,6 +4,11 @@
   background-color: #000;
   border: solid 1px #fff;
   padding: 0;
+  background-image: url(../../../images/edit.svg);
+  background-repeat: no-repeat;
+  background-position: center;
+  background-size: 10px;
+  cursor: pointer;
 }
 
 .profile__button-edit:hover {
@@ -15,5 +20,6 @@
   .profile__button-edit {
     height: 18px;
     width: 18px;
+    background-size: 7.5px;
   }
 }

@@ -5,6 +5,7 @@
   line-height: 29px;
   color: #000000;
   margin: 0;
+  max-width: 224px; /*иначе обрезается сердечко*/
 
   text-overflow: ellipsis;
   white-space: nowrap;
