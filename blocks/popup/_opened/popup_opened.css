@@ -1,9 +1,5 @@
 .popup_opened {
-  display: flex;
-  justify-content: center;
-  align-items: center;
-  /*препятствует плавному открытию (разобраться в след. спринте)*/
-  /*visibility: visible; /*плавное открытие
+  visibility: visible;
   opacity: 1;
-  transition: .2s;*/
+  transition: .5s;
 }
