@@ -25,6 +25,14 @@ const initialCards = [
   }
 ];
 
+const config = {
+  formSelector: '.popup__form',
+  inputSelector: '.popup__input',
+  submitButtonSelector: '.popup__button-save',
+  inactiveButtonClass: 'popup__button-save_inactive',
+  inputErrorClass: 'popup__input_type_error',
+  errorClass: 'popup__error_active'
+}
 const popup = document.querySelector('.popup');
 const popupEditProfile = document.querySelector('.popup_edit-profile');
 const popupAddCard = document.querySelector('.popup_add-card');
@@ -64,7 +72,7 @@ const newCard = (name, link) => {
   //обработчик событий лайка карточки
   buttonLike.addEventListener('click', (evt) => {
     evt.target.classList.toggle('cards__button-like_active');
-  })
+  });
 
   // обработчик событий открытия карточки
   templateImage.addEventListener('click', () => {
@@ -72,24 +80,43 @@ const newCard = (name, link) => {
     subPopup.textContent = name;
     imagePopup.alt = name;
     popupOpen(popupOpenCard);
-  })
+  });
 
   // обработчик событий удаления карточки
   templateDeleteCard.addEventListener('click', () => {
     DeleteCard(templateCard);
-  })
-
+  });
   return templateCard;
 }
 
 //функция открытия попапа
 const popupOpen = (open) => {
+  document.addEventListener('keydown', closePopupByKey);
+  document.addEventListener('click', closePopupByOverlay);
   open.classList.add('popup_opened');
 }
 //функция закрытия попапа
 const popupClose = (close) => {
+  document.removeEventListener('keydown', closePopupByKey);
+  document.removeEventListener('click', closePopupByOverlay);
   close.classList.remove('popup_opened');
+
 }
+//функция закрытия попапа по нажатию на Esc
+const closePopupByKey = (evt) => {
+  const popup = document.querySelector('.popup_opened');
+  if (evt.key === 'Escape') {
+    popupClose(popup);
+  }
+}
+//функция закрытия попапа по нажатию на оверлей
+const closePopupByOverlay = (evt) => {
+  const popup = document.querySelector('.popup_opened');
+  if (evt.target.classList.contains('popup_opened')) {
+    popupClose(popup);
+  }
+}
+
 //функция изменения данных профиля
 const formSubmitProfile = (evt) => {
   evt.preventDefault();
@@ -112,7 +139,7 @@ const DeleteCard = (item) => {
 //функция добавления карточек при загрузке страницы
 initialCards.forEach((item) => {
   editTemplate.append(newCard(item.name, item.link));
-})
+});
 
 //обработчики событий открытия попапов
 buttonEditProfile.addEventListener('click', () => {
@@ -133,7 +160,7 @@ buttonCloseCard.addEventListener('click', () => {
 });
 buttonCloseImage.addEventListener('click', () => {
   popupClose(popupOpenCard);
-})
+});
 
 //обработчик событий сохранения данных
 formPopupProfile.addEventListener('submit', formSubmitProfile);

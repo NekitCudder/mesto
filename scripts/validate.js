@@ -1,15 +1,6 @@
   const formPopup = document.querySelector('.popup__form');
   const inputPopup = document.querySelector('.popup__input');
 
-const config = {
-  formSelector: '.popup__form',
-  inputSelector: '.popup__input',
-  submitButtonSelector: '.popup__button-save',
-  inactiveButtonClass: 'popup__button-save_inactive',
-  inputErrorClass: 'popup__input_type_error',
-  errorClass: 'popup__error_active'
-}
-
 // Функция, которая добавляет класс с ошибкой
 const showInputError = (formPopup, inputPopup, errorMessage) => {
   const inputError = formPopup.querySelector(`.${inputPopup.id}-error`);
