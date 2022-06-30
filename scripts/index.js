@@ -50,7 +50,6 @@ const linkCardInput = document.querySelector('.popup__link-card');
 const imagePopup = document.querySelector('.popup__image');
 const subPopup = document.querySelector('.popup__sub');
 
-
 //функция создания новой карточки
 const newCard = (name, link) => {
   const templateCard = template.querySelector('.cards__item').cloneNode(true);
@@ -82,7 +81,6 @@ const newCard = (name, link) => {
 
   return templateCard;
 }
-
 
 //функция открытия попапа
 const popupOpen = (open) => {
@@ -140,6 +138,3 @@ buttonCloseImage.addEventListener('click', () => {
 //обработчик событий сохранения данных
 formPopupProfile.addEventListener('submit', formSubmitProfile);
 formPopupCard.addEventListener('submit', formSubmitCard);
-
-
-
