@@ -32,7 +32,8 @@ const config = {
   inactiveButtonClass: 'popup__button-save_inactive',
   inputErrorClass: 'popup__input_type_error',
   errorClass: 'popup__error_active'
-}
+};
+
 const popup = document.querySelector('.popup');
 const popupEditProfile = document.querySelector('.popup_edit-profile');
 const popupAddCard = document.querySelector('.popup_add-card');
@@ -144,11 +145,15 @@ initialCards.forEach((item) => {
 //обработчики событий открытия попапов
 buttonEditProfile.addEventListener('click', () => {
   popupOpen(popupEditProfile);
+  resetForm(popupEditProfile);
   nameInput.value = profileName.textContent;
   captionInput.value = profileCaption.textContent;
 });
 buttonAddCard.addEventListener('click', () => {
+  resetForm(popupAddCard);
   popupOpen(popupAddCard);
+  nameCardInput.value='';
+  linkCardInput.value='';
 });
 
 //обработчики событий закрытия попапов
