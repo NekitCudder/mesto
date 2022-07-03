@@ -1,6 +1,12 @@
 // Функция, которая добавляет класс с ошибкой
-const showInputError = (formPopup, inputPopup, errorMessage, config) => {
+const showInputError = (formPopup, inputPopup, errorMessage, inputErrorClass, config) => {
+    console.log(formPopup);
+    console.log(inputPopup);
+    console.log(errorMessage);
+    console.log(inputErrorClass);
+
   const inputError = formPopup.querySelector(`.${inputPopup.id}-error`);
+    console.log(inputError);
   inputPopup.classList.add(config.inputErrorClass);
   inputError.textContent = errorMessage;
 }
@@ -45,7 +51,7 @@ const setEventListeners = (formPopup, config) => {
   const buttonSubmit = formPopup.querySelector(config.submitButtonSelector);
   inputList.forEach((inputPopup) => {
     inputPopup.addEventListener('input', () => {
-      isValid(formPopup, inputPopup);
+      isValid(formPopup, inputPopup, config);
       toggleButtonState(inputList, buttonSubmit, config);
     });
   });

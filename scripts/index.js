@@ -7,8 +7,11 @@ const config = {
   errorClass: 'popup__error_active'
 };
 enableValidation(config);
+// console.log(config.inputErrorClass);
+// console.log(config.errorClass);
 console.log(config);
-console.log(config.inputErrorClass);
+
+
 
 const popupEditProfile = document.querySelector('.popup_edit-profile');
 const popupAddCard = document.querySelector('.popup_add-card');
