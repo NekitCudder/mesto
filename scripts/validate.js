@@ -1,12 +1,10 @@
-// const formPopup = document.querySelector('.popup__form');
-// const inputPopup = document.querySelector('.popup__input');
-
 // Функция, которая добавляет класс с ошибкой
 const showInputError = (formPopup, inputPopup, errorMessage, config) => {
   const inputError = formPopup.querySelector(`.${inputPopup.id}-error`);
   inputPopup.classList.add(config.inputErrorClass);
   inputError.textContent = errorMessage;
 }
+
 // Функция, которая удаляет класс с ошибкой
 const hideInputError = (formPopup, inputPopup, config) => {
   const inputError = formPopup.querySelector(`.${inputPopup.id}-error`);
@@ -16,10 +14,10 @@ const hideInputError = (formPopup, inputPopup, config) => {
 // Функция, которая проверяет валидность поля
 const isValid = (formPopup, inputPopup, config) => {
   if (!inputPopup.validity.valid) {
-    showInputError(formPopup, inputPopup, inputPopup.validationMessage,config)
+    showInputError(formPopup, inputPopup, inputPopup.validationMessage, config);
   }
   else {
-    hideInputError(formPopup, inputPopup, config)
+    hideInputError(formPopup, inputPopup, config);
   }
 }
 // Функция, которая проверяет валидность хотя бы одного поля
@@ -59,7 +57,7 @@ const enableValidation = (config) => {
     setEventListeners(formPopup, config);
   });
 }
-enableValidation(config);
+
 
 //Функция сброса формы
 const resetForm = (formPopup, config) => {
