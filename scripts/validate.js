@@ -1,12 +1,6 @@
 // Функция, которая добавляет класс с ошибкой
-const showInputError = (formPopup, inputPopup, errorMessage, inputErrorClass, config) => {
-    console.log(formPopup);
-    console.log(inputPopup);
-    console.log(errorMessage);
-    console.log(inputErrorClass);
-
+const showInputError = (formPopup, inputPopup, errorMessage, config) => {
   const inputError = formPopup.querySelector(`.${inputPopup.id}-error`);
-    console.log(inputError);
   inputPopup.classList.add(config.inputErrorClass);
   inputError.textContent = errorMessage;
 }
@@ -18,7 +12,7 @@ const hideInputError = (formPopup, inputPopup, config) => {
   inputError.textContent = '';
 }
 // Функция, которая проверяет валидность поля
-const isValid = (formPopup, inputPopup, config) => {
+const isValid = (formPopup, inputPopup) => {
   if (!inputPopup.validity.valid) {
     showInputError(formPopup, inputPopup, inputPopup.validationMessage, config);
   }
@@ -35,12 +29,14 @@ const hasInvalidInput = (inputList) => {
 // Функция, которая меняет состояние кнопки
 const toggleButtonState = (inputList, buttonSubmit, config) => {
   if (hasInvalidInput(inputList)) {
-    inactiveButton(buttonSubmit);
+    inactiveButton(buttonSubmit, config);
+    buttonSubmit.disabled=true;
   } else {
     buttonSubmit.classList.remove(config.inactiveButtonClass);
+    buttonSubmit.disabled=false;
   }
 }
-
+// Функция, которая делает кнопку неактивной
 const inactiveButton = (buttonSubmit, config) => {
   buttonSubmit.classList.add(config.inactiveButtonClass);
 }
@@ -51,7 +47,7 @@ const setEventListeners = (formPopup, config) => {
   const buttonSubmit = formPopup.querySelector(config.submitButtonSelector);
   inputList.forEach((inputPopup) => {
     inputPopup.addEventListener('input', () => {
-      isValid(formPopup, inputPopup, config);
+      isValid(formPopup, inputPopup);
       toggleButtonState(inputList, buttonSubmit, config);
     });
   });
@@ -63,7 +59,6 @@ const enableValidation = (config) => {
     setEventListeners(formPopup, config);
   });
 }
-
 
 //Функция сброса формы
 const resetForm = (formPopup, config) => {

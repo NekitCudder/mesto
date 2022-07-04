@@ -7,11 +7,6 @@ const config = {
   errorClass: 'popup__error_active'
 };
 enableValidation(config);
-// console.log(config.inputErrorClass);
-// console.log(config.errorClass);
-console.log(config);
-
-
 
 const popupEditProfile = document.querySelector('.popup_edit-profile');
 const popupAddCard = document.querySelector('.popup_add-card');
@@ -50,7 +45,6 @@ const createNewCard = (name, link) => {
   templateImage.src = link;
   templateImage.alt = name;
 
-
   //обработчик событий лайка карточки
   buttonLike.addEventListener('click', (evt) => {
     evt.target.classList.toggle('cards__button-like_active');
@@ -86,16 +80,16 @@ const closePopup = (close) => {
 }
 //функция закрытия попапа по нажатию на Esc
 const closePopupByKey = (evt) => {
-  const popup = document.querySelector('.popup_opened');
   if (evt.key === 'Escape') {
+    const popup = document.querySelector('.popup_opened');
     closePopup(popup);
   }
 }
 //функция закрытия попапа по нажатию на оверлей
 const closePopupByOverlay = (evt) => {
-  const popup = document.querySelector('.popup_opened');
   if (evt.target.classList.contains('popup_opened')) {
-    closePopup(popup);
+    const popup = document.querySelector('.popup_opened');
+    closePopup(evt.target);
   }
 }
 
@@ -133,8 +127,7 @@ buttonEditProfile.addEventListener('click', () => {
 buttonAddCard.addEventListener('click', () => {
   resetForm(popupAddCard, config);
   openPopup(popupAddCard);
-  nameCardInput.value = '';
-  linkCardInput.value = '';
+  formPopupCard.reset();
 });
 
 //обработчики событий закрытия попапов
