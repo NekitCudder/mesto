@@ -88,7 +88,6 @@ const closePopupByKey = (evt) => {
 //функция закрытия попапа по нажатию на оверлей
 const closePopupByOverlay = (evt) => {
   if (evt.target.classList.contains('popup_opened')) {
-    const popup = document.querySelector('.popup_opened');
     closePopup(evt.target);
   }
 }

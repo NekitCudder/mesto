@@ -39,6 +39,7 @@ const toggleButtonState = (inputList, buttonSubmit, config) => {
 // Функция, которая делает кнопку неактивной
 const inactiveButton = (buttonSubmit, config) => {
   buttonSubmit.classList.add(config.inactiveButtonClass);
+  buttonSubmit.disabled=true;
 }
 
 //Функция, которая добавляет слушателя всем полям input
