@@ -1,3 +1,6 @@
+import { Card } from "./сard.js";
+import { initialCards } from "./constants.js";
+
 const config = {
   formSelector: '.popup__form',
   inputSelector: '.popup__input',
@@ -23,47 +26,59 @@ const buttonCloseProfile = popupEditProfile.querySelector('.popup__button-close'
 const buttonCloseCard = popupAddCard.querySelector('.popup__button-close');
 const buttonCloseImage = popupOpenCard.querySelector('.popup__button-close');
 
-const template = document.querySelector('#elements').content;
+// const template = document.querySelector('#elements').content;
 const editTemplate = document.querySelector('.cards');
 
 const nameCardInput = document.querySelector('.popup__name-card');
 const linkCardInput = document.querySelector('.popup__link-card');
 
-const imagePopup = document.querySelector('.popup__image');
-const subPopup = document.querySelector('.popup__sub');
+// const imagePopup = document.querySelector('.popup__image');
+// const subPopup = document.querySelector('.popup__sub');
 
 
 
 //функция создания новой карточки
-const createNewCard = (name, link) => {
-  const templateCard = template.querySelector('.cards__item').cloneNode(true);
-  const templateTitle = templateCard.querySelector('.cards__title');
-  const templateImage = templateCard.querySelector('.cards__image');
-  const templateDeleteCard = templateCard.querySelector('.cards__button-delete');
-  const buttonLike = templateCard.querySelector('.cards__button-like');
-  templateTitle.textContent = name;
-  templateImage.src = link;
-  templateImage.alt = name;
+// const createNewCard = (name, link) => {
+//   // const templateCard = template.querySelector('.cards__item').cloneNode(true);
+//   // const templateTitle = templateCard.querySelector('.cards__title');
+//   // const templateImage = templateCard.querySelector('.cards__image');
+// const templateDeleteCard = templateCard.querySelector('.cards__button-delete');
+// const buttonLike = templateCard.querySelector('.cards__button-like');
+//   templateTitle.textContent = name;
+//   templateImage.src = link;
+//   templateImage.alt = name;
 
-  //обработчик событий лайка карточки
-  buttonLike.addEventListener('click', (evt) => {
-    evt.target.classList.toggle('cards__button-like_active');
-  });
+//обработчик событий лайка карточки
+// buttonLike.addEventListener('click', (evt) => {
+//   evt.target.classList.toggle('cards__button-like_active');
+// });
 
-  // обработчик событий открытия карточки
-  templateImage.addEventListener('click', () => {
-    imagePopup.src = link;
-    subPopup.textContent = name;
-    imagePopup.alt = name;
-    openPopup(popupOpenCard);
-  });
+// обработчик событий открытия карточки
+// templateImage.addEventListener('click', () => {
+//   imagePopup.src = link;
+//   subPopup.textContent = name;
+//   imagePopup.alt = name;
+//   openPopup(popupOpenCard);
+// });
 
-  // обработчик событий удаления карточки
-  templateDeleteCard.addEventListener('click', () => {
-    deleteCard(templateCard);
-  });
-  return templateCard;
-}
+// обработчик событий удаления карточки
+//   templateDeleteCard.addEventListener('click', () => {
+//     deleteCard(templateCard);
+//   });
+//   return templateCard;
+// }
+
+initialCards.forEach((item) => {
+  const card = new Card(item.name, item.link, '#elements');
+  const cardElement = card.generateCard();
+  editTemplate.append(cardElement);
+});
+
+
+
+
+
+
 
 //функция открытия попапа
 const openPopup = (open) => {
@@ -107,14 +122,14 @@ const handleCardSubmit = (evt) => {
   closePopup(popupAddCard);
 }
 //функция удаления карточки
-const deleteCard = (item) => {
-  item.remove();
-}
+// const deleteCard = (item) => {
+//   item.remove();
+// }
 
 //функция добавления карточек при загрузке страницы
-initialCards.forEach((item) => {
-  editTemplate.append(createNewCard(item.name, item.link));
-});
+// initialCards.forEach((item) => {
+//   editTemplate.append(createNewCard(item.name, item.link));
+// });
 
 //обработчики событий открытия попапов
 buttonEditProfile.addEventListener('click', () => {
@@ -143,3 +158,4 @@ buttonCloseImage.addEventListener('click', () => {
 //обработчик событий сохранения данных
 formPopupProfile.addEventListener('submit', handleProfileSubmit);
 formPopupCard.addEventListener('submit', handleCardSubmit);
+export { openPopup };
