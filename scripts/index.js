@@ -1,3 +1,7 @@
+import { Card } from "./сard.js";
+import { initialCards } from "./constants.js";
+import { FormValidator } from "./formValidator.js";
+
 const config = {
   formSelector: '.popup__form',
   inputSelector: '.popup__input',
@@ -7,6 +11,12 @@ const config = {
   errorClass: 'popup__error_active'
 };
 enableValidation(config);
+
+// const forms = Array.from(document.querySelectorAll('.popup__form'));
+// forms.forEach((formsElement) => {
+//   const formValid = new FormValidator(config, formsElement);
+//   formValid.enableValidation();
+// });
 
 const popupEditProfile = document.querySelector('.popup_edit-profile');
 const popupAddCard = document.querySelector('.popup_add-card');
@@ -22,47 +32,32 @@ const profileCaption = document.querySelector('.profile__caption');
 const buttonCloseProfile = popupEditProfile.querySelector('.popup__button-close');
 const buttonCloseCard = popupAddCard.querySelector('.popup__button-close');
 const buttonCloseImage = popupOpenCard.querySelector('.popup__button-close');
-
-const template = document.querySelector('#elements').content;
+const buttonSubmitProfile = popupEditProfile.querySelector('.popup__button-save');
 const editTemplate = document.querySelector('.cards');
 
 const nameCardInput = document.querySelector('.popup__name-card');
 const linkCardInput = document.querySelector('.popup__link-card');
 
-const imagePopup = document.querySelector('.popup__image');
-const subPopup = document.querySelector('.popup__sub');
+const popupProfile = document.querySelector('.popup-profile');
+const popupCard = document.querySelector('.popup-card');
 
+const formProfileValidation = new FormValidator(config, popupProfile);
+const formCardValidation = new FormValidator(config, popupCard);
+formProfileValidation.enableValidation();
+formCardValidation.enableValidation();
 
+initialCards.forEach((item) => {
+  const card = new Card(item.name, item.link, '#elements');
+  editTemplate.append(card.generateCard());
+});
 
-//функция создания новой карточки
-const createNewCard = (name, link) => {
-  const templateCard = template.querySelector('.cards__item').cloneNode(true);
-  const templateTitle = templateCard.querySelector('.cards__title');
-  const templateImage = templateCard.querySelector('.cards__image');
-  const templateDeleteCard = templateCard.querySelector('.cards__button-delete');
-  const buttonLike = templateCard.querySelector('.cards__button-like');
-  templateTitle.textContent = name;
-  templateImage.src = link;
-  templateImage.alt = name;
-
-  //обработчик событий лайка карточки
-  buttonLike.addEventListener('click', (evt) => {
-    evt.target.classList.toggle('cards__button-like_active');
-  });
-
-  // обработчик событий открытия карточки
-  templateImage.addEventListener('click', () => {
-    imagePopup.src = link;
-    subPopup.textContent = name;
-    imagePopup.alt = name;
-    openPopup(popupOpenCard);
-  });
-
-  // обработчик событий удаления карточки
-  templateDeleteCard.addEventListener('click', () => {
-    deleteCard(templateCard);
-  });
-  return templateCard;
+//функция добавления новой карточки
+const handleCardSubmit = (evt) => {
+  evt.preventDefault();
+  const card = new Card(nameCardInput.value, linkCardInput.value, '#elements');
+  editTemplate.prepend(card.generateCard());
+  // formPopupCard.reset();
+  closePopup(popupAddCard);
 }
 
 //функция открытия попапа
@@ -91,7 +86,6 @@ const closePopupByOverlay = (evt) => {
     closePopup(evt.target);
   }
 }
-
 //функция изменения данных профиля
 const handleProfileSubmit = (evt) => {
   evt.preventDefault();
@@ -99,34 +93,20 @@ const handleProfileSubmit = (evt) => {
   profileCaption.textContent = captionInput.value;
   closePopup(popupEditProfile);
 }
-//функция добавления новой карточки
-const handleCardSubmit = (evt) => {
-  evt.preventDefault();
-  editTemplate.prepend(createNewCard(nameCardInput.value, linkCardInput.value));
-  formPopupCard.reset();
-  closePopup(popupAddCard);
-}
-//функция удаления карточки
-const deleteCard = (item) => {
-  item.remove();
-}
-
-//функция добавления карточек при загрузке страницы
-initialCards.forEach((item) => {
-  editTemplate.append(createNewCard(item.name, item.link));
-});
 
 //обработчики событий открытия попапов
 buttonEditProfile.addEventListener('click', () => {
+  formProfileValidation.resetForm();
   openPopup(popupEditProfile);
-  resetForm(popupEditProfile, config);
   nameInput.value = profileName.textContent;
   captionInput.value = profileCaption.textContent;
+  buttonSubmitProfile.classList.remove('popup__button-save_inactive');
+  buttonSubmitProfile.removeAttribute('disabled');
 });
 buttonAddCard.addEventListener('click', () => {
-  resetForm(popupAddCard, config);
+  formCardValidation.resetForm();
   openPopup(popupAddCard);
-  formPopupCard.reset();
+  // formPopupCard.reset();
 });
 
 //обработчики событий закрытия попапов
@@ -143,3 +123,5 @@ buttonCloseImage.addEventListener('click', () => {
 //обработчик событий сохранения данных
 formPopupProfile.addEventListener('submit', handleProfileSubmit);
 formPopupCard.addEventListener('submit', handleCardSubmit);
+
+export { openPopup };
