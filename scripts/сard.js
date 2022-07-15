@@ -51,4 +51,5 @@ class Card {
     openPopup(popupOpenCard);
   }
 }
+
 export { Card };
