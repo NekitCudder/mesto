@@ -17,10 +17,6 @@ const config = {
 //   formValid.enableValidation();
 // });
 
-
-
-
-
 const popupEditProfile = document.querySelector('.popup_edit-profile');
 const popupAddCard = document.querySelector('.popup_add-card');
 const popupOpenCard = document.querySelector('.popup_open-card');
@@ -41,65 +37,27 @@ const editTemplate = document.querySelector('.cards');
 const nameCardInput = document.querySelector('.popup__name-card');
 const linkCardInput = document.querySelector('.popup__link-card');
 
-const popupProfile =document.querySelector('.popup-profile');
+const popupProfile = document.querySelector('.popup-profile');
 const popupCard = document.querySelector('.popup-card');
 
-
-// const formsValidation = (forms) => {inactiveButtonClass
-//   return new FormValidator(config, forms);
-// }
-// const profileValidation = formsValidation(formPopupProfile);
-// const addCardValidation = formsValidation(formPopupCard);
-// const imagePopup = document.querySelector('.popup__image');
-// const subPopup = document.querySelector('.popup__sub');
-
-
-//функция создания новой карточки
-// const createNewCard = (name, link) => {
-//   // const templateCard = template.querySelector('.cards__item').cloneNode(true);
-//   // const templateTitle = templateCard.querySelector('.cards__title');
-//   // const templateImage = templateCard.querySelector('.cards__image');
-// const templateDeleteCard = templateCard.querySelector('.cards__button-delete');
-// const buttonLike = templateCard.querySelector('.cards__button-like');
-//   templateTitle.textContent = name;
-//   templateImage.src = link;
-//   templateImage.alt = name;
-
-//обработчик событий лайка карточки
-// buttonLike.addEventListener('click', (evt) => {
-//   evt.target.classList.toggle('cards__button-like_active');
-// });
-
-// обработчик событий открытия карточки
-// templateImage.addEventListener('click', () => {
-//   imagePopup.src = link;
-//   subPopup.textContent = name;
-//   imagePopup.alt = name;
-//   openPopup(popupOpenCard);
-// });
-
-// обработчик событий удаления карточки
-//   templateDeleteCard.addEventListener('click', () => {
-//     deleteCard(templateCard);
-//   });
-//   return templateCard;
-// }
+const formProfileValidation = new FormValidator(config, popupProfile);
+const formCardValidation = new FormValidator(config, popupCard);
+formProfileValidation.enableValidation();
+formCardValidation.enableValidation();
 
 initialCards.forEach((item) => {
   const card = new Card(item.name, item.link, '#elements');
-  const cardElement = card.generateCard();
-  editTemplate.append(cardElement);
+  editTemplate.append(card.generateCard());
 });
 
-const formProfileValidation = new FormValidator(config, popupProfile);
-formProfileValidation.enableValidation();
-
-const formCardValidation = new FormValidator(config, popupCard);
-formCardValidation.enableValidation();
-
-
-
-
+//функция добавления новой карточки
+const handleCardSubmit = (evt) => {
+  evt.preventDefault();
+  const card = new Card(nameCardInput.value, linkCardInput.value, '#elements');
+  editTemplate.prepend(card.generateCard());
+  // formPopupCard.reset();
+  closePopup(popupAddCard);
+}
 
 //функция открытия попапа
 const openPopup = (open) => {
@@ -133,13 +91,6 @@ const handleProfileSubmit = (evt) => {
   profileName.textContent = nameInput.value;
   profileCaption.textContent = captionInput.value;
   closePopup(popupEditProfile);
-}
-//функция добавления новой карточки
-const handleCardSubmit = (evt) => {
-  evt.preventDefault();
-  editTemplate.prepend(createNewCard(nameCardInput.value, linkCardInput.value));
-  // formPopupCard.reset();
-  closePopup(popupAddCard);
 }
 
 //обработчики событий открытия попапов
