@@ -7,6 +7,9 @@ class FormValidator {
     this._inputErrorClass = data.inputErrorClass;
     this._errorClass = data.errorClass;
     this._elementValidate = elementValidate;
+
+    this._inputList = Array.from(this._elementValidate.querySelectorAll(this._inputSelector));
+    this._inputs = this._elementValidate.querySelectorAll(this._inputSelector);
   }
   // Функция, которая добавляет класс с ошибкой
   _showInputError(inputPopup, errorMessage) {
@@ -53,12 +56,11 @@ class FormValidator {
 
   //Функция, которая добавляет слушателя всем полям input
   _setEventListeners() {
-    const inputList = Array.from(this._elementValidate.querySelectorAll(this._inputSelector));
     const buttonSubmit = this._elementValidate.querySelector(this._submitButtonSelector);
-    inputList.forEach((inputPopup) => {
+    this._inputList.forEach((inputPopup) => {
       inputPopup.addEventListener('input', () => {
         this._isValid(inputPopup);
-        this._toggleButtonState(inputList, buttonSubmit);
+        this._toggleButtonState(this._inputList, buttonSubmit);
       });
     });
   }
@@ -70,9 +72,8 @@ class FormValidator {
   // //Функция сброса формы
   resetForm() {
     this._elementValidate.reset();
-    const inputs = this._elementValidate.querySelectorAll(this._inputSelector);
     const submitButton = this._elementValidate.querySelector(this._submitButtonSelector);
-    inputs.forEach((inputPopup) => {
+    this._inputs.forEach((inputPopup) => {
       this._hideInputError(inputPopup);
     });
     this._inactiveButton(submitButton);
