@@ -10,7 +10,6 @@ const config = {
   inputErrorClass: 'popup__input_type_error',
   errorClass: 'popup__error_active'
 };
-enableValidation(config);
 
 // const forms = Array.from(document.querySelectorAll('.popup__form'));
 // forms.forEach((formsElement) => {
