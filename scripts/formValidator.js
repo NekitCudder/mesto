@@ -11,7 +11,6 @@ class FormValidator {
     this._inputList = Array.from(this._elementValidate.querySelectorAll(this._inputSelector));
     this._inputs = this._elementValidate.querySelectorAll(this._inputSelector);
     this._buttonSubmit = this._elementValidate.querySelector(this._submitButtonSelector);
-    this._submitButton = this._elementValidate.querySelector(this._submitButtonSelector);
   }
   // Функция, которая добавляет класс с ошибкой
   _showInputError(inputPopup, errorMessage) {
@@ -76,7 +75,7 @@ class FormValidator {
     this._inputs.forEach((inputPopup) => {
       this._hideInputError(inputPopup);
     });
-    this._inactiveButton(this._submitButton);
+    this._inactiveButton(this._buttonSubmit );
   }
 }
 
