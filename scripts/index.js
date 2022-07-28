@@ -66,32 +66,8 @@ const handleCardSubmit = (evt) => {
   editTemplate.prepend(createCard(newCardValues));
   closePopup(popupAddCard);
 }
-//функция открытия попапа
-const openPopup = (open) => {
-  document.addEventListener('keydown', closePopupByKey);
-  document.addEventListener('click', closePopupByOverlay);
-  open.classList.add('popup_opened');
-}
-//функция закрытия попапа
-const closePopup = (close) => {
-  document.removeEventListener('keydown', closePopupByKey);
-  document.removeEventListener('click', closePopupByOverlay);
-  close.classList.remove('popup_opened');
 
-}
-//функция закрытия попапа по нажатию на Esc
-const closePopupByKey = (evt) => {
-  if (evt.key === 'Escape') {
-    const popup = document.querySelector('.popup_opened');
-    closePopup(popup);
-  }
-}
-//функция закрытия попапа по нажатию на оверлей
-const closePopupByOverlay = (evt) => {
-  if (evt.target.classList.contains('popup_opened')) {
-    closePopup(evt.target);
-  }
-}
+
 //функция изменения данных профиля
 const handleProfileSubmit = (evt) => {
   evt.preventDefault();
@@ -111,12 +87,7 @@ buttonAddCard.addEventListener('click', () => {
   openPopup(popupAddCard);
 });
 
-//обработчик событий закрытия попапов
-const closeButtons = document.querySelectorAll('.popup__button-close');
-closeButtons.forEach((button) => {
-  const popup =button.closest('.popup');
-  button.addEventListener('click',() => closePopup(popup));
-});
+
 
 //обработчик событий сохранения данных
 formPopupProfile.addEventListener('submit', handleProfileSubmit);
