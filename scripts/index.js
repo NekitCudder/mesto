@@ -1,6 +1,7 @@
 import { Card } from "./сard.js";
 import { initialCards } from "./constants.js";
 import { FormValidator } from "./formValidator.js";
+import Section from "./section.js";
 
 const config = {
   formSelector: '.popup__form',
@@ -56,7 +57,6 @@ const createCard = (item) => {
 initialCards.forEach((item) => {
   editTemplate.append(createCard(item));
 });
-
 //функция добавления новой карточки
 const handleCardSubmit = (evt) => {
   evt.preventDefault();
@@ -67,6 +67,29 @@ const handleCardSubmit = (evt) => {
   editTemplate.prepend(createCard(newCardValues));
   closePopup(popupAddCard);
 }
+
+
+const cardList = new Section({
+  items: initialCards,
+  renderer: (items) => {
+    const card = createCard(items);
+    cardList.addItem(card);
+  }
+}, '.elements');
+
+cardList.renderItems();
+
+
+
+
+
+
+
+
+
+
+
+
 //функция изменения данных профиля
 const handleProfileSubmit = (evt) => {
   evt.preventDefault();
@@ -96,4 +119,4 @@ buttonAddCard.addEventListener('click', () => {
 formPopupProfile.addEventListener('submit', handleProfileSubmit);
 formPopupCard.addEventListener('submit', handleCardSubmit);
 
-export { openPopup };
+// export { openPopup };
