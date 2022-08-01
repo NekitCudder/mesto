@@ -2,6 +2,7 @@ import { Card } from "./сard.js";
 import { initialCards } from "./constants.js";
 import { FormValidator } from "./formValidator.js";
 import Section from "./section.js";
+import UserInfo from "./UserInfo.js";
 
 const config = {
   formSelector: '.popup__form',
@@ -80,6 +81,10 @@ const cardList = new Section({
 cardList.renderItems();
 
 
+const newProfile = new UserInfo({
+  name: '.popup__input_text_name',
+  info: '.popup__input_text_caption',
+})
 
 
 
@@ -89,14 +94,13 @@ cardList.renderItems();
 
 
 
-
-//функция изменения данных профиля
-const handleProfileSubmit = (evt) => {
-  evt.preventDefault();
-  profileName.textContent = nameInput.value;
-  profileCaption.textContent = captionInput.value;
-  closePopup(popupEditProfile);
-}
+// //функция изменения данных профиля
+// const handleProfileSubmit = (evt) => {
+//   evt.preventDefault();
+//   profileName.textContent = nameInput.value;
+//   profileCaption.textContent = captionInput.value;
+//   closePopup(popupEditProfile);
+// }
 
 
 
