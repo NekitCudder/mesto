@@ -1,4 +1,4 @@
-const initialCards = [
+export const initialCards = [
   {
     name: 'Санкт-Петербург',
     link: 'https://images.unsplash.com/photo-1613993744586-bfe156f5b151?ixlib=rb-1.2.1&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=687&q=80'
@@ -24,3 +24,25 @@ const initialCards = [
     link: 'https://images.unsplash.com/photo-1573155993864-9c31895fafe8?ixlib=rb-1.2.1&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=735&q=80'
   }
 ];
+
+export const config = {
+  formSelector: '.popup__form',
+  inputSelector: '.popup__input',
+  submitButtonSelector: '.popup__button-save',
+  inactiveButtonClass: 'popup__button-save_inactive',
+  inputErrorClass: 'popup__input_type_error',
+  errorClass: 'popup__error_active'
+};
+
+export const popupEditProfile = document.querySelector('.popup_edit-profile');
+export const popupAddCard = document.querySelector('.popup_add-card');
+export const popupOpenCard = document.querySelector('.popup_open-card');
+export const buttonEditProfile = document.querySelector('.profile__button-edit');
+export const buttonAddCard = document.querySelector('.profile__button-add');
+export const nameInput = document.querySelector('.popup__input_text_name');
+export const captionInput = document.querySelector('.popup__input_text_caption');
+export const editTemplate = document.querySelector('.cards');
+export const nameCardInput = document.querySelector('.popup__name-card');
+export const linkCardInput = document.querySelector('.popup__link-card');
+export const popupProfile = document.querySelector('.popup-profile');
+export const popupCard = document.querySelector('.popup-card');

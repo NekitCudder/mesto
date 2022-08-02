@@ -1,9 +1,9 @@
-export default class UserInfo {
+export class UserInfo {
   constructor({ name, info }) {
     this._name = document.querySelector(name);
     this._info = document.querySelector(info);
   }
-
+  //получение данных профиля со страницы
   getUserInfo() {
     this._profile = {
       name: this._name.textContent,
@@ -11,9 +11,9 @@ export default class UserInfo {
     }
     return this._profile;
   }
-
-  setUserInfo(data) {
-    this._name.textContent = data.name;
-    this._info.textContent.data.info;
+  //установка новых данных профиля
+  setUserInfo(newName, newInfo) {
+    this._name.textContent = newName;
+    this._info.textContent = newInfo;
   }
 }
