@@ -5,19 +5,18 @@
   <meta charset="UTF-8">
   <meta http-equiv="X-UA-Compatible" content="IE=edge">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <link rel="stylesheet" href="./src/pages/index.css">
   <title>Mesto</title>
 </head>
 
 <body class="page">
   <header class="header">
-    <img class="header__logo" src="./src/images/logo.svg" alt="Логотип Место">
+    <img class="header__logo" src="<%=require('./images/logo.svg')%>" alt="Логотип Место">
   </header>
 
   <main>
     <section class="profile">
       <div class="profile__info">
-        <img class="profile__avatar" src="./src/images/avatar.jpg" alt="Аватар профиля">
+        <img class="profile__avatar" src="<%=require('./images/avatar.jpg')%>" alt="Аватар профиля">
         <div class="profile__date">
           <div class="profile__name-edit">
             <h1 class="profile__name">Жак-Ив Кусто</h1>
@@ -103,14 +102,14 @@
     </div>
   </div>
 
-  <script type="module" src="./src/scripts/constants/constants.js"></script>
-  <script type="module" src="./src/scripts/pages/index.js"></script>
-  <script type="module" src="./src/scripts/components/сard.js"></script>
-  <script type="module" src="./src/scripts/components/formValidator.js"></script>
-  <script type="module" src="./src/scripts/components/Popup.js"></script>
-  <script type="module" src="./src/scripts/components/PopupWithImage.js"></script>
-  <script type="module" src="./src/scripts/components/PopupWithForm.js"></script>
-  <script type="module" src="./src/scripts/components/Section.js"></script>
+  <script type="module" src="./scripts/constants/constants.js"></script>
+  <script type="module" src="./scripts/pages/index.js"></script>
+  <script type="module" src="./scripts/components/сard.js"></script>
+  <script type="module" src="./scripts/components/formValidator.js"></script>
+  <script type="module" src="./scripts/components/Popup.js"></script>
+  <script type="module" src="./scripts/components/PopupWithImage.js"></script>
+  <script type="module" src="./scripts/components/PopupWithForm.js"></script>
+  <script type="module" src="./scripts/components/Section.js"></script>
 
 </body>
 

@@ -1,3 +1,4 @@
+import '../../pages/index.css';
 import { Card } from "../components/сard.js";
 import { FormValidator } from "../components/formValidator.js";
 import { Section } from "../components/Section.js";
