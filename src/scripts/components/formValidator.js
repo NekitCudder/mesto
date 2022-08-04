@@ -1,4 +1,4 @@
-class FormValidator {
+export class FormValidator {
   constructor(data, elementValidate) {
     this._formSelector = data.formSelector;
     this._inputSelector = data.inputSelector;
@@ -41,12 +41,12 @@ class FormValidator {
     });
   }
   // Функция, которая меняет состояние кнопки
-  _toggleButtonState(inputList, buttonSubmit) {
-    if (this._hasInvalidInput(inputList)) {
-      this._inactiveButton(buttonSubmit);
+  _toggleButtonState() {
+    if (this._hasInvalidInput(this._inputList)) {
+      this._inactiveButton(this._buttonSubmit);
     } else {
-      buttonSubmit.classList.remove(this._inactiveButtonClass);
-      buttonSubmit.disabled = false;
+      this._buttonSubmit.classList.remove(this._inactiveButtonClass);
+      this._buttonSubmit.disabled = false;
     }
   }
   // Функция, которая делает кнопку неактивной
@@ -60,7 +60,7 @@ class FormValidator {
     this._inputList.forEach((inputPopup) => {
       inputPopup.addEventListener('input', () => {
         this._isValid(inputPopup);
-        this._toggleButtonState(this._inputList, this._buttonSubmit);
+        this._toggleButtonState();
       });
     });
   }
@@ -71,12 +71,9 @@ class FormValidator {
 
   // //Функция сброса формы
   resetForm() {
-    this._elementValidate.reset();
     this._inputs.forEach((inputPopup) => {
       this._hideInputError(inputPopup);
     });
-    this._inactiveButton(this._buttonSubmit );
+    this._toggleButtonState();
   }
 }
-
-export { FormValidator };
