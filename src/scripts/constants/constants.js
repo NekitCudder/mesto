@@ -34,9 +34,9 @@ export const config = {
   errorClass: 'popup__error_active'
 };
 
-export const popupEditProfile = document.querySelector('.popup_edit-profile');
-export const popupAddCard = document.querySelector('.popup_add-card');
-export const popupOpenCard = document.querySelector('.popup_open-card');
+export const popupEditProfile = '.popup_edit-profile';
+export const popupAddCard = '.popup_add-card';
+export const popupOpenCard = '.popup_open-card';
 export const buttonEditProfile = document.querySelector('.profile__button-edit');
 export const buttonAddCard = document.querySelector('.profile__button-add');
 export const nameInput = document.querySelector('.popup__input_text_name');

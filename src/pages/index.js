@@ -38,10 +38,12 @@ formCardValidation.enableValidation();
 const newImagePopup = new PopupWithImage(popupOpenCard);
 newImagePopup.setEventListeners();
 
+
 //функция открытия попапа с изображением  
 const handleCardClick = (name, link) => {
   newImagePopup.open(name, link);
 }
+
 //функция создания новой карточки
 const createCard = (name, link) => {
   const card = new Card(name, link, '#elements', handleCardClick);
@@ -78,9 +80,9 @@ newProfilePopup.setEventListeners();
 
 //обработчики событий открытия попапов
 buttonEditProfile.addEventListener('click', () => {
-  const UserInput = newProfile.getUserInfo();
-  nameInput.value = UserInput.name;
-  captionInput.value = UserInput.info;
+  const userInput = newProfile.getUserInfo();
+  nameInput.value = userInput.name;
+  captionInput.value = userInput.info;
   formProfileValidation.resetForm();
   newProfilePopup.open();
 });

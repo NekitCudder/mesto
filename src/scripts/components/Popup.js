@@ -1,8 +1,8 @@
 export default class Popup {
   constructor(popupSelector) {
-    this._popup = popupSelector;
-    this._handleEscClose=this._handleEscClose.bind(this);
-    this._closePopupByOverlay=this._closePopupByOverlay.bind(this);
+    this._popup = document.querySelector(popupSelector);
+    this._handleEscClose = this._handleEscClose.bind(this);
+    this._closePopupByOverlay = this._closePopupByOverlay.bind(this);
   }
   //функция открытия попапа
   open() {
@@ -33,10 +33,5 @@ export default class Popup {
     this._popup.querySelector('.popup__button-close').addEventListener("click", () => {
       this.close();
     });
-
-    // closeButtons.forEach((button) => {
-    //   const popup = button.closest('.popup');
-    //   button.addEventListener('click', () => this.close());
-    // });
   }
 }
