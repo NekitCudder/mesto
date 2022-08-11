@@ -6,6 +6,7 @@ import { UserInfo } from "../scripts/components/UserInfo.js";
 import { PopupWithForm } from "../scripts/components/PopupWithForm.js";
 import { PopupWithImage } from "../scripts/components/PopupWithImage.js";
 import { initialCards } from "../scripts/constants/constants.js";
+import { Api } from '../scripts/components/Api';
 import {
   config,
   popupEditProfile,
@@ -25,12 +26,21 @@ import {
   linkAvatarInput,
   buttonChangeAvatar
 } from "../scripts/constants/constants.js"
-import { data } from 'autoprefixer';
+
+
+const api = new Api({
+  baseUrl: 'https://mesto.nomoreparties.co/v1/cohort-48',
+  headers: {
+    authorization: '3629ec08-4cd1-4c9c-b53e-0de7dbdbb7c9',
+    'Content-Type': 'application/json'
+  }
+});
 
 //создание информации о профиле
 const newProfile = new UserInfo({
   name: '.profile__name',
   info: '.profile__caption',
+  avatar: '.profile__avatar',
 });
 
 //валидация форм
@@ -67,8 +77,12 @@ const initialCardList = new Section(
 initialCardList.renderItems();
 
 //функция редактирования данных профиля
-const submitProfile = (data) => {
-  newProfile.setUserInfo(data.name, data.info);
+const submitProfile = (items) => {
+  newProfile.setUserInfo(items);
+}
+//функция изменения аватара
+const submitAvatar = (items) => {
+  newProfile.setUserAvatar(items);
 }
 //функция добавления новой карточки
 const submitCard = (data) => {
@@ -81,10 +95,7 @@ const submitCard = (data) => {
 
 // }
 
-//функция изменения аватара
-// const submitAvatar = (data) =>{
-//   const newAvatar 
-// }
+
 
 //создание попапа добавления карточки
 const newCardPopup = new PopupWithForm(popupAddCard, submitCard);
@@ -97,7 +108,8 @@ newProfilePopup.setEventListeners();
 // const newDeleteCardPopup = new PopupWithForm(popupDeleteCard, deleteCard);
 
 //создание попапа изменения аватара
-// const newAvatarPopup = new PopupWithForm(popupAvatar,submitAvatar)
+const newAvatarPopup = new PopupWithForm(popupAvatar, submitAvatar);
+newAvatarPopup.setEventListeners();
 
 //обработчики событий открытия попапов
 buttonEditProfile.addEventListener('click', () => {
@@ -111,7 +123,6 @@ buttonAddCard.addEventListener('click', () => {
   formCardValidation.resetForm();
   newCardPopup.open();
 });
-// buttonChangeAvatar.addEventListener('click',() =>{
-//   formCardValidation.resetForm();
-
-// });
+buttonChangeAvatar.addEventListener('click', () => {
+  newAvatarPopup.open();
+});
