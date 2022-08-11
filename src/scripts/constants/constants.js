@@ -46,3 +46,5 @@ export const nameCardInput = document.querySelector('.popup__name-card');
 export const linkCardInput = document.querySelector('.popup__link-card');
 export const popupProfile = document.querySelector('.popup-profile');
 export const popupCard = document.querySelector('.popup-card');
+
+export const popupDeleteCard = '.popup_delete-card';

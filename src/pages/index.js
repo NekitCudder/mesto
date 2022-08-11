@@ -19,7 +19,8 @@ import {
   nameCardInput,
   linkCardInput,
   popupProfile,
-  popupCard
+  popupCard,
+  popupDeleteCard
 } from "../scripts/constants/constants.js"
 
 //создание информации о профиле
@@ -71,12 +72,21 @@ const submitCard = (data) => {
   initialCardList.addItem(newCard);
 }
 
+// //функция удаления карточки
+// const deleteCard = () => {
+
+// }
+
 //создание попапа добавления карточки
 const newCardPopup = new PopupWithForm(popupAddCard, submitCard);
 newCardPopup.setEventListeners();
 //создание попапа редактирования профиля
 const newProfilePopup = new PopupWithForm(popupEditProfile, submitProfile);
 newProfilePopup.setEventListeners();
+
+// //создание попапа удаления карточки
+// const newDeleteCardPopup = new PopupWithForm(popupDeleteCard, deleteCard);
+
 
 //обработчики событий открытия попапов
 buttonEditProfile.addEventListener('click', () => {
@@ -90,3 +100,4 @@ buttonAddCard.addEventListener('click', () => {
   formCardValidation.resetForm();
   newCardPopup.open();
 });
+
