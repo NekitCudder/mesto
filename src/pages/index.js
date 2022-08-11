@@ -20,8 +20,12 @@ import {
   linkCardInput,
   popupProfile,
   popupCard,
-  popupDeleteCard
+  popupDeleteCard,
+  popupAvatar,
+  linkAvatarInput,
+  buttonChangeAvatar
 } from "../scripts/constants/constants.js"
+import { data } from 'autoprefixer';
 
 //создание информации о профиле
 const newProfile = new UserInfo({
@@ -77,6 +81,11 @@ const submitCard = (data) => {
 
 // }
 
+//функция изменения аватара
+// const submitAvatar = (data) =>{
+//   const newAvatar 
+// }
+
 //создание попапа добавления карточки
 const newCardPopup = new PopupWithForm(popupAddCard, submitCard);
 newCardPopup.setEventListeners();
@@ -87,6 +96,8 @@ newProfilePopup.setEventListeners();
 // //создание попапа удаления карточки
 // const newDeleteCardPopup = new PopupWithForm(popupDeleteCard, deleteCard);
 
+//создание попапа изменения аватара
+// const newAvatarPopup = new PopupWithForm(popupAvatar,submitAvatar)
 
 //обработчики событий открытия попапов
 buttonEditProfile.addEventListener('click', () => {
@@ -100,4 +111,7 @@ buttonAddCard.addEventListener('click', () => {
   formCardValidation.resetForm();
   newCardPopup.open();
 });
+// buttonChangeAvatar.addEventListener('click',() =>{
+//   formCardValidation.resetForm();
 
+// });

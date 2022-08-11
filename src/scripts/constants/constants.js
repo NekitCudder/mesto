@@ -48,3 +48,6 @@ export const popupProfile = document.querySelector('.popup-profile');
 export const popupCard = document.querySelector('.popup-card');
 
 export const popupDeleteCard = '.popup_delete-card';
+export const popupAvatar = '.popup_change-avatar';
+export const linkAvatarInput = document.querySelector('.popup__link-ava');
+export const buttonChangeAvatar = document.querySelector('.popup_change-avatar');
