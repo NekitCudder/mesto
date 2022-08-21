@@ -45,6 +45,7 @@ export const captionInput = document.querySelector('.popup__input_text_caption')
 export const editTemplate = document.querySelector('.cards');
 export const popupProfile = document.querySelector('.popup-profile');
 export const popupCard = document.querySelector('.popup-card');
+export const cardsLikeCounter = document.querySelector('.cards__like-counter');
 
 export const popupDeleteCard = '.popup_delete-card';
 export const popupAvatar = document.querySelector('.popup-avatar');
