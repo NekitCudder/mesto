@@ -15,12 +15,14 @@
 .elements{margin:auto;max-width:880px;padding-bottom:61px}@media screen and (max-width:1152px){.elements{padding-bottom:48px}}@media screen and (max-width:926px){.elements{max-width:600px}}
 .cards{display:grid;gap:20px 17px;grid-template-columns:repeat(auto-fit,minmax(282px,1fr));margin:0;padding:0}
 .cards__caption{background-color:#fff;display:flex;justify-content:space-between;padding:25px 15px 31px 21px}
-.cards__button-like{align-self:center;background-color:#fff;background-image:url(1ad06e85f169668a1f36.svg);background-position:50%;background-repeat:no-repeat;background-size:22px 19px;border:0;cursor:pointer;height:19px;padding:0;width:22px}.cards__button-like:hover{opacity:.5;transition:opacity .2s linear}
+.cards__button-like{align-self:center;background-color:#fff;background-image:url(1ad06e85f169668a1f36.svg);background-position:50%;background-repeat:no-repeat;background-size:22px 19px;border:0;cursor:pointer;height:19px;margin-bottom:3px;padding:0;width:22px}.cards__button-like:hover{opacity:.5;transition:opacity .2s linear}
 .cards__button-like_active{background-image:url(dd6a61e81552be95f4b7.svg)}
 .cards__button-delete{background-color:transparent;background-image:url(ce3b64935accf9b8212e.svg);border:0;cursor:pointer;height:19px;padding:0;position:absolute;right:20px;top:20px;width:18px}.cards__button-delete:hover{opacity:.5;transition:opacity .2s linear}
-.cards__image{height:282px;-o-object-fit:cover;object-fit:cover;width:282px}
+.cards__image{height:282px;-o-object-fit:cover;object-fit:cover;width:282px}.cards__image:hover{opacity:.6;transition:opacity .2s linear}
 .cards__item{border-radius:10px;display:flex;flex-direction:column;margin:auto;overflow:hidden;position:relative;width:282px}
 .cards__title{color:#000;font-size:24px;font-style:normal;font-weight:900;line-height:29px;margin:0;max-width:224px;overflow:hidden;text-overflow:ellipsis;white-space:nowrap}
+.cards__like{display:flex;flex-direction:column;text-align:center}
+.cards__like-counter{margin:0}
 .footer{margin:auto;max-width:880px}
 .footer__copyright{color:#545454;font-size:18px;font-style:normal;font-weight:400;line-height:22px;margin:0 0 0 19px}@media screen and (max-width:1152px){.footer__copyright{font-size:14px;line-height:17px}}
 .popup{align-items:center;background-color:rgba(0,0,0,.5);display:flex;height:100vh;justify-content:center;left:0;opacity:0;position:fixed;top:0;transition:.2s;visibility:hidden;width:100vw;z-index:1}
