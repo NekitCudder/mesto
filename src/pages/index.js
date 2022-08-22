@@ -42,9 +42,10 @@ const newProfile = new UserInfo({
   avatar: '.profile__avatar',
 });
 //получение данных пользователя с сервера
-api.getUserInfo()
+api.getUserInfo() //!!!на будущее:объединить в промис вместе с вызовом getUserInfo!!!
   .then((res) => {
     newProfile.setUserInfo(res);
+    newProfile.setUserAvatar(res);
     userId = res._id;
   })
   .catch((err) => {
@@ -136,7 +137,9 @@ const submitProfile = (items) => {
   newProfilePopup.setMessageOfLoading(true);
   api.editUserInfo(items)
     .then((res) => {
-      newProfile.setUserInfo(res)
+      newProfile.setUserInfo(res);
+      newProfile.setUserAvatar(res);
+      newProfilePopup.close();
     })
     .catch((err) => {
       console.log(`Ошибка редактирования данных пользователя: ${err}`);
@@ -150,7 +153,8 @@ const submitAvatar = (items) => {
   newAvatarPopup.setMessageOfLoading(true);
   api.editAvatar(items)
     .then((res) => {
-      newProfile.setUserAvatar(res)
+      newProfile.setUserAvatar(res);
+      newAvatarPopup.close();
     })
     .catch((err) => {
       console.log(`Ошибка загрузки нового аватара: ${err}`);
@@ -167,6 +171,7 @@ const submitCard = (data) => {
       const newCard = createCard(res);
       const cardEl = newCard.generateCard();
       initialCardList.addNewItem(cardEl);
+      newCardPopup.close();
     })
     .catch((err) => {
       console.log(`Ошибка добавления новой карточки: ${err}`);

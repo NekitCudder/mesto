@@ -33,6 +33,11 @@ export class Card {
       this._cardButtonDelete.style.display = 'none';
     }
 
+    if (this._likes.find((data) =>
+      this._userId === data._id)) {
+        this._handlePutCardLike();
+    };
+
     return this._element;
   }
 
